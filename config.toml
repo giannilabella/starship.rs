@@ -5,24 +5,48 @@
 format = """
 $all\
 $fill\
-$battery\
-${custom.time_emoji}\
+$battery \
+${custom.time_emoji} \
 $time\
 $line_break\
 $os\
 $container\
 $character"""
 
-[fill]
-symbol    = " "
-[[battery.display]]
-threshold = 100
-[time]
-disabled  = false
-format    = "[$time]($style)"
-[os]
-disabled  = false
+# Basic configs
+[fill] # Aligning battery and time module to the right
+symbol = " "
+[time] # Disabled by default
+disabled = false
+format   = "[$time]($style)"
+[os] # Disabled by default
+disabled = false
 
+# Battery module config
+[battery]
+full_symbol     = ""
+charging_symbol = ""
+unknown_symbol  = ""
+empty_symbol    = ""
+format          = "[$symbol $percentage]($style)"
+disabled        = false
+[[battery.display]]
+threshold          = 15
+discharging_symbol = ""
+[[battery.display]]
+threshold          = 25
+discharging_symbol = ""
+[[battery.display]]
+threshold          = 50
+discharging_symbol = ""
+[[battery.display]]
+threshold          = 75
+discharging_symbol = ""
+[[battery.display]]
+threshold          = 100
+discharging_symbol = ""
+
+# Resolve conflict with .pl prolog file extension
 [perl]
 detect_files = ["$detect_files", ".perl", "!.swipl"]
 disabled     = false
@@ -41,12 +65,12 @@ symbol            = " "
 [custom.time_emoji]
 command           = """
                         hour=$(date +%H)
-			if [[ hour -ge 6 && hour -le 7 ]];then
-			    echo 🌅
+                        if [[ hour -ge 6 && hour -le 7 ]];then
+                            echo 🌅
                         elif [[ hour -ge 8 && hour -le 16 ]];then
                             echo 🌞
-			elif [[ hour -ge 17 && hour -le 18 ]];then
-			    echo 🌇
+                        elif [[ hour -ge 17 && hour -le 18 ]];then
+                            echo 🌇
                         elif [[ hour -ge 19 && hour -le 21 ]];then
                             echo 🌜
                         elif [[ hour -ge 22 || hour -le 3 ]];then
@@ -60,7 +84,7 @@ detect_extensions = []
 detect_files      = []
 detect_folders    = []
 disabled          = false
-format            = "[$output]($style) "
+format            = "[$output]($style)"
 style             = "bold yellow"
 symbol            = ""
 when              = true
