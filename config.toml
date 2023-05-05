@@ -79,7 +79,7 @@ command           = """
                             echo 🌛
                         fi
                     """
-description       = "Displays a different emoji given the time of the day"
+description       = "Displays a different emoji based on the time of day"
 detect_extensions = []
 detect_files      = []
 detect_folders    = []
