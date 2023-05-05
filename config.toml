@@ -32,7 +32,7 @@ format          = "[$symbol $percentage]($style)"
 disabled        = false
 [[battery.display]]
 threshold          = 15
-discharging_symbol = ""
+discharging_symbol = ""
 [[battery.display]]
 threshold          = 25
 discharging_symbol = ""
@@ -58,7 +58,7 @@ detect_extensions = ["pl", "pro", "prolog"]
 detect_files      = [".swipl", "!.perl"]
 detect_folders    = []
 disabled          = false
-format            = "via [$symbol($output )]($style)"
+format            = "via [$symbol(v$output)]($style) "
 style             = "bright-red"
 symbol            = " "
 
